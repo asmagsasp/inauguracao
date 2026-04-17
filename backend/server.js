@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const db = require('./db');
+const { sendConfirmationEmail } = require('./emailService');
 
 const app = express();
 const PORT = 3001;
@@ -158,7 +159,11 @@ app.put('/api/ingressos/:id/status', (req, res) => {
         }
         
         if (status === 'pago') {
-            console.log(`[EMAIL SEND] Mock: Email de validação e ingresso enviados para o cliente (Pedido #${ingressoId}).`);
+            db.get('SELECT * FROM ingressos WHERE id = ?', [ingressoId], (err, ingresso) => {
+                if (!err && ingresso) {
+                    sendConfirmationEmail(ingresso);
+                }
+            });
         }
 
         res.json({ message: 'Status atualizado com sucesso' });
