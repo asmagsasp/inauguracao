@@ -103,7 +103,7 @@ function Home() {
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
           <div style={{ background: 'rgba(0,0,0,0.3)', padding: '1rem', borderRadius: '0.5rem' }}>
-             📅 <strong>Data:</strong> 7 de junho de 2026
+             📅 <strong>Data:</strong> 5 de junho de 2026
           </div>
           <div style={{ background: 'rgba(0,0,0,0.3)', padding: '1rem', borderRadius: '0.5rem' }}>
              📍 <strong>Local:</strong> FIAP de Pereira Barreto
@@ -237,7 +237,7 @@ function Home() {
               <p><strong>Show de Inauguração</strong></p>
               <p><strong>Titular:</strong> {formData.nome}</p>
               <p><strong>Nº do Ingresso:</strong> #GT-{ingressoId.toString().padStart(5, '0')}</p>
-              <p><strong>Data:</strong> 7 de junho de 2026</p>
+              <p><strong>Data:</strong> 5 de junho de 2026</p>
               <p><strong>Local:</strong> FIAP de Pereira Barreto</p>
               
               <div style={{ background: 'white', padding: '0.5rem', display: 'inline-block', marginTop: '1rem', borderRadius: '0.5rem' }}>
