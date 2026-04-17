@@ -156,6 +156,11 @@ app.put('/api/ingressos/:id/status', (req, res) => {
         if (this.changes === 0) {
             return res.status(404).json({ error: 'Ingresso não encontrado' });
         }
+        
+        if (status === 'pago') {
+            console.log(`[EMAIL SEND] Mock: Email de validação e ingresso enviados para o cliente (Pedido #${ingressoId}).`);
+        }
+
         res.json({ message: 'Status atualizado com sucesso' });
     });
 });

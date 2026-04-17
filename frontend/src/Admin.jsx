@@ -46,6 +46,17 @@ function Admin() {
     }
   };
 
+  const handleConfirmar = async (id) => {
+    try {
+      await ingressosAPI.updateStatus(id, 'pago');
+      alert('Ingresso confirmado e e-mail enviado com sucesso!');
+      carregarIngressos();
+    } catch(err) {
+      console.error(err);
+      alert('Erro ao confirmar ingresso.');
+    }
+  };
+
   const getStatusBadge = (status) => {
     if (status === 'pago') return <span className="badge badge-success">Pago</span>;
     if (status === 'aguardando pagamento') return <span className="badge badge-warning">Pendente</span>;
@@ -142,7 +153,15 @@ function Admin() {
                   </td>
                   <td>{getStatusBadge(ing.status_pagamento)}</td>
                   <td>{formatarData(ing.data_compra)}</td>
-                  <td>
+                  <td style={{ display: 'flex', gap: '0.5rem' }}>
+                    {ing.status_pagamento !== 'pago' && (
+                      <button 
+                        onClick={() => handleConfirmar(ing.id)}
+                        className="btn" 
+                        style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#10b981', padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
+                        Confirmar
+                      </button>
+                    )}
                     <button 
                       onClick={() => handleDeletar(ing.id)}
                       className="btn" 
